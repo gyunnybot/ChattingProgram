@@ -31,6 +31,7 @@ public class Client {
         socket = new Socket(host, port);
         input = new DataInputStream(socket.getInputStream());
         output = new DataOutputStream(socket.getOutputStream());
+        
         readHandler = new ReadHandler(input, this);
         writeHandler = new WriteHandler(output, this);
 
@@ -49,6 +50,7 @@ public class Client {
         readHandler.close();
         closeAll(socket, input, output);
         closed = true;
+        
         log("연결 종료: " + socket);
     }
 }

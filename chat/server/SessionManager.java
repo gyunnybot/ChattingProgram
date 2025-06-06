@@ -25,7 +25,7 @@ public class SessionManager {
         sessions.clear();
     }
 
-    public synchronized void sendAll(String message) { //전체 공지 보내기!
+    public synchronized void sendAll(String message) { //전체 공지 보내기
         for (Session session : sessions) {
             try {
                 session.send(message);
@@ -42,6 +42,7 @@ public class SessionManager {
                 usernames.add(session.getUsername());
             }
         }
+        
         return usernames;
     }
 }

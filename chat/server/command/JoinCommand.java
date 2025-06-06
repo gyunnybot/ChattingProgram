@@ -1,7 +1,6 @@
 package chat.server.command;
 
 import chat.server.Session;
-
 import chat.server.SessionManager;
 
 public class JoinCommand implements Command {

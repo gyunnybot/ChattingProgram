@@ -15,6 +15,7 @@ public class CommandManagerV1 implements CommandManager {
         if (totalMessage.startsWith("/exit")) {
             throw new IOException("exit");
         }
+        
         sessionManager.sendAll(totalMessage);
     }
 }

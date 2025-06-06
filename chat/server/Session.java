@@ -24,8 +24,8 @@ public class Session implements Runnable {
         this.input = new DataInputStream(socket.getInputStream());
         this.output = new DataOutputStream(socket.getOutputStream());
 
-        this.commandManager = commandManager; //추후 논의
-        this.sessionManager = sessionManager;
+        this.commandManager = commandManager; //명령 관리
+        this.sessionManager = sessionManager; //세션 관리
         this.sessionManager.add(this);
     }
 
@@ -33,10 +33,10 @@ public class Session implements Runnable {
     public void run() {
         try {
             while (true) {
-                // 클라이언트로부터 문자 받기
+                //클라이언트로부터 문자 받기
                 String received = input.readUTF();
                 log("client -> server: " + received);
-                commandManager.execute(received, this);
+                commandManager.execute(received, this); //각각 정의된 명령 실행
             }
         } catch (IOException e) {
             log(e);
@@ -56,8 +56,10 @@ public class Session implements Runnable {
         if (closed) {
             return;
         }
+        
         closeAll(socket, input, output);
         closed = true;
+
         log("연결 종료: " + socket);
     }
 

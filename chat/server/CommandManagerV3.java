@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class CommandManagerV3 implements CommandManager {
     public static final String DELIMITER = "!";
-    private final Map<String, Command> commands = new HashMap<>();
+    private final Map<String, Command> commands = new HashMap<>(); //{String, Command}쌍의 데이터 저장
 
     public CommandManagerV3(SessionManager sessionManager) {
         commands.put("/join", new JoinCommand(sessionManager));
@@ -23,6 +23,7 @@ public class CommandManagerV3 implements CommandManager {
             IOException {
         String[] args = totalMessage.split(DELIMITER);
         String key = args[0];
+        
         Command command = commands.get(key);
 
         if (command == null) {

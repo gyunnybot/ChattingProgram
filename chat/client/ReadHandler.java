@@ -8,6 +8,7 @@ import static util.MyLogger.log;
 public class ReadHandler implements Runnable {
     private final DataInputStream input;
     private final Client client;
+
     public boolean closed = false;
 
     public ReadHandler(DataInputStream input, Client client) {
@@ -36,6 +37,7 @@ public class ReadHandler implements Runnable {
 
         // 종료 로직 필요시 작성
         closed = true;
+        
         log("readHandler 종료");
     }
 }
