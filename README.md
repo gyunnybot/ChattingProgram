@@ -44,6 +44,18 @@ public synchronized void sendAll(String message) { //전체 공지 보내기
 }
 ```
 
+자원 정리 또한 세션 매니저에서 구현했습니다. ShutdownHook에 등록하여 프로그램 종료 시 일괄 처리됩니다.
+
+```java
+public synchronized void closeAll() { //전체 자원 정리
+    for (Session session : sessions) {
+        session.close();
+    }
+
+    sessions.clear();
+}
+```
+
 ## 커맨드 패턴(Command Pattern)을 활용한 채팅 기능 구현
 클라이언트가 사용할 수 있는 각각의 기능을 하나의 Command로 보고 인터페이스와 구현체를 작성했습니다.
 
