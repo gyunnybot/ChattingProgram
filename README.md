@@ -1,4 +1,4 @@
-# JAVA 콘솔 채팅 프로그램 💬
+# 콘솔 채팅 프로그램(JAVA) 💬
 
 ---
 
@@ -30,10 +30,10 @@ public void start() throws IOException {
 
 클라이언트 연결 요청이 들어올 때마다 서버 소켓은 세션(Session)을 활용해 소켓을 생성하고, 해당 세션은 세션 매니저(SessionManager)가 관리하도록 설계하였습니다.
 
-세션 매니저 내 sendAll()을 통해 전체 사용자가 메세지를 받을 수 있습니다.
+이후 세션 매니저 내 sendAll()을 통해 전체 사용자가 메세지를 받을 수 있습니다.
 
 ```java
-public synchronized void sendAll(String message) { //전체 공지 보내기
+public synchronized void sendAll(String message) { //전체 메세지 보내기
     for (Session session : sessions) {
         try {
             session.send(message);
@@ -44,7 +44,7 @@ public synchronized void sendAll(String message) { //전체 공지 보내기
 }
 ```
 
-자원 정리 또한 세션 매니저가 관리합니다. ShutdownHook에 등록하여 프로그램 종료 시 일괄 처리됩니다.
+자원 정리 또한 세션 매니저가 관리합니다. closeAll()은 ShutdownHook에 등록되어 프로그램 종료 시 일괄 처리됩니다.
 
 ```java
 public synchronized void closeAll() { //전체 자원 정리
@@ -61,7 +61,7 @@ public synchronized void closeAll() { //전체 자원 정리
 
 주요 명령어와 그에 맞는 기능을 구현해 key-value 쌍으로 입력한 후 특정 key가 입력되면 명령을 실행합니다.
 
-사전에 입력되지 않은 key는 getOrDefault를 통해 디폴트로 선언한 명령을 수행합니다.
+사전에 입력되지 않은 key는 getOrDefault를 통해 디폴트로 선언한 커멘드를 수행합니다.
 
 ```java
 public class CommandManagerV4 implements CommandManager {
