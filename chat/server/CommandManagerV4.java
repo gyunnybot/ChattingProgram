@@ -4,11 +4,10 @@ import chat.server.command.*;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 
 public class CommandManagerV4 implements CommandManager {
     public static final String DELIMITER = "!";
-    private final Map<String, Command> commands = new HashMap<>();
+    private final HashMap<String, Command> commands = new HashMap<>();
     private final Command defaultCommand = new DefaultCommand();
 
     public CommandManagerV4(SessionManager sessionManager) {
