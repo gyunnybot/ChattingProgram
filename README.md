@@ -1,4 +1,7 @@
-# 콘솔 채팅 프로그램 in Java
+# 콘솔 채팅 프로그램(Java)
+
+This document covers resolving read/write blocking issues encountered when implementing a chat program, session-based connection management, and extending functionality using the command pattern.
+It explains how to improve scalability and stability through client-server architecture design, resource management, and command-based feature implementation.
 
 ## 읽기/쓰기 블로킹 문제
 프로그램을 사용하는 동안 클라이언트는 채팅 메시지를 읽음과 동시에 쓸 수 있어야 합니다.
