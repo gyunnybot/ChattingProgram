@@ -6,7 +6,7 @@ It explains how to improve scalability and stability through client-server archi
 ## 읽기/쓰기 블로킹 문제
 프로그램을 사용하는 동안 클라이언트는 채팅 메시지를 읽음과 동시에 쓸 수 있어야 합니다.
 
-ReadHandler, WriteHandler를 따로 구현 후 멀티스레드 방식으로 클라이언트 코드를 설계했습니다.
+읽기/쓰기를 ReadHandler, WriteHandler로 구현 후 멀티스레드 방식으로 블로킹 문제를 해결합니다.
 
 ```java
 public void start() throws IOException {
@@ -29,7 +29,7 @@ public void start() throws IOException {
 ## 클라이언트-서버 연결 관리와 자원 정리
 특정 사용자가 보내는 메시지는 채팅 프로그램에 접속한 모든 사용자에게 전송되어야 합니다.
 
-클라이언트 연결 요청이 들어올 때마다 서버는 세션(Session)을 활용해 생성된 서버 소켓을 관리하고, 해당 세션은 세션 매니저(SessionManager)가 운영하도록 설계하였습니다.
+연결 요청이 들어올 때마다 서버는 세션(Session)을 활용해 생성된 서버 소켓을 관리하고, 해당 세션은 세션 매니저(SessionManager)가 관리합니다.
 
 이후 세션 매니저 내 sendAll()을 통해 전체 사용자가 메시지를 받을 수 있습니다.
 
